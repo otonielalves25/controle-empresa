@@ -23,7 +23,7 @@ public class StatusController {
 	public String inicia(Model model) {
 		model.addAttribute("status", new Status());
 		model.addAttribute("listaStatus", statusRepository.findAll());
-		return "status/status-cad";
+		return "status-cad";
 	}
 
 	@PostMapping("/cadastrar")
@@ -31,14 +31,11 @@ public class StatusController {
 
 		Status status2 = statusRepository.findByNome(status.getNome());
 
-	
-		
-
 		if (status2 != null) {
 			model.addAttribute("msg", "Status já cadatrado");
 			model.addAttribute("status", status);
 			model.addAttribute("listaStatus", statusRepository.findAll());
-			return "status/status-cad";
+			return "status-cad";
 
 		}
 
@@ -46,14 +43,14 @@ public class StatusController {
 		model.addAttribute("status", new Status());
 		model.addAttribute("listaStatus", statusRepository.findAll());
 		model.addAttribute("msg", "Cadastrado com Sucesso");
-		return "status/status-cad";
+		return "status-cad";
 	}
 
 	@GetMapping("/lista")
 	public String lista(Model model) {
 		model.addAttribute("status", new Status());
 		model.addAttribute("listaStatus", statusRepository.findAll());
-		return "status/status-cad";
+		return "status-cad";
 	}
 
 	@RequestMapping(value = "/deletar/{id}", method = RequestMethod.GET)
@@ -61,14 +58,14 @@ public class StatusController {
 		statusRepository.deleteById(codigo);
 		model.addAttribute("status", new Status());
 		model.addAttribute("listaStatus", statusRepository.findAll());
-		return "status/status-cad";
+		return "status-cad";
 	}
 
 	@RequestMapping(value = "/retorna/{id}", method = RequestMethod.GET)
 	public String buscarPorId(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("status", statusRepository.findById(id));
 		model.addAttribute("listaStatus", statusRepository.findAll());
-		return "status/status-cad";
+		return "status-cad";
 	}
 
 }
