@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pagina Modelo</title>
+</head>
+
+<body>
+
+	<!-- INSERIR O MENU NO INICIO -->
+	<nav th:replace="menu :: menu"></nav>
+	<div class="container col-10">
+
+		<!-- CAIXA DE CADASTRO -->
+		<div class="shadow-lg p-5 my-3  mt-5 bg-body rounded">INDEX</div>
+		<div class="col">
+			<h1>PAGINA MODELO DO SISTEMA</h1>
+		</div>
+	</div>
+
+
+	<!-- INCLUDE DO RODAPE -->
+	<div th:replace="menu :: rodape">
+	</div>
+</body>
+
+</html>
