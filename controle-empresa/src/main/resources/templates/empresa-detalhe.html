@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css}" rel="stylesheet" />
+	<title>Pagina Modelo</title>
+</head>
+
+<body>
+
+	<!-- INSERIR O MENU NO INICIO -->
+	<nav th:replace="menu :: menu"></nav>
+	<div class="container col-10">
+
+
+		<!-- TABELA COM LISTAGEM DE STATUS -->
+		<h3 class="mt-5">Detalhe da Empresa</h3>
+
+	</div>
+
+	<!-- INCLUDE DO RODAPE -->
+	<div th:replace="menu :: rodape">
+	</div>
+
+
+	<script>
+
+		function validarExclusao() {
+
+			if (confirm("Deseja ecluir o cadastro ?")) {
+				return true;
+			} else {
+				return false;
+			}
+
+		}
+
+	</script>
+
+
+</body>
+
+</html>

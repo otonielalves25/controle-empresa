@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css}" rel="stylesheet" />
+	<title>Pagina Modelo</title>
+</head>
+
+<body>
+
+	<!-- INSERIR O MENU NO INICIO -->
+	<nav th:replace="menu :: menu"></nav>
+	<div class="container col-12">
+
+		<!-- CAIXA DE CADASTRO -->
+		<!-- TABELA COM LISTAGEM DE STATUS -->
+		<h3 class="mt-5">Lista de Tipos Empresas</h3>
+		<table class="table table-striped table-hover table-sm mt-3">
+			<thead class="table-dark opacity-75">
+				<tr>
+					<th scope="col" style="width:70px">ID</th>
+					<th scope="col">Nome Empresa</th>
+					<th scope="col">Razão Social</th>
+					<th scope="col">CNPJ</th>
+					<th scope="col" style="width:200px" class="text-center">Acões</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="objeto :  ${listagem}">
+					<th scope="row" th:text="${objeto.id}"></th>
+					<td th:text="${objeto.nome}"></td>
+					<td th:text="${objeto.razaoSocial}"></td>
+					<td th:text="${objeto.cnpj}"></td>
+					<td class="text-center">
+
+						<a th:href="@{/empresa/detalhe/{id}(id=${objeto.id})}"
+							class="btn btn-warning btn-sm  rounded-circle"><i class="bi bi-search"></i></a>
+
+
+						<a th:href="@{/empresa/deletar/{id}(id=${objeto.id})}" th:onclick='return validarExclusao();'
+							class="btn btn-danger btn-sm  rounded-circle">
+							<i class="bi bi-x-lg"></i>
+						</a>
+
+						<a th:href="@{/empresa/retorna/{id}(id=${objeto.id})}"
+							class="btn btn-success btn-sm  rounded-circle"><i class="bi bi-pencil"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+	<!-- INCLUDE DO RODAPE -->
+	<div th:replace="menu :: rodape">
+	</div>
+
+
+	<script>
+
+		function validarExclusao() {
+
+			if (confirm("Deseja ecluir o cadastro ?")) {
+				return true;
+			} else {
+				return false;
+			}
+
+		}
+
+	</script>
+
+
+</body>
+
+</html>
