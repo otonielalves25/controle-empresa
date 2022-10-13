@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css}" rel="stylesheet" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cadastro status</title>
+</head>
+
+<body>
+	<!-- INSERIR O MENU NO INICIO -->
+	<nav th:replace="menu :: menu"></nav>
+	
+	<!-- DEFINE O TAMANHO DA CAIXINHA -->
+	<div class="container col-10">
+
+		<!-- CAIXA DE CADASTRO -->
+		<div class="shadow-lg p-5 my-3  mt-5 bg-body rounded">
+			<div class="col">
+				<h1>Cadastro de Tipo Empresa</h1>
+			</div>
+			<form method="post" th:action="@{/tipoempresa/cadastrar}" th:object="${tipoempresa}">
+
+				<input type="hidden" th:field="*{id}">
+
+				<div class="row">
+
+					<div class="col-12">
+
+						<label for="nome" class="form-label">Tipo</label>
+						<input id="nome" name="nome" required="required" type="text" class="form-control"
+							th:field="*{nome}" autofocus maxlength="150" />
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-2 mt-2">
+						<input type="submit" value="Salvar" class="btn btn-primary w-100" />
+
+					</div>
+					<div class="col-2 mt-2">					
+						<a th:href="@{/tipoempresa}" class="btn btn-secondary w-100">Limpar</a>
+
+					</div>
+				</div>
+		</div>
+		</form>
+
+		<!-- TABELA COM LISTAGEM DE STATUS -->
+		<h3 class="mt-5">Lista de Tipos Empresas</h3>
+		<table class="table table-striped table-hover table-sm mt-3">
+			<thead class="table-dark opacity-75">
+				<tr>
+					<th scope="col" style="width:70px">ID</th>
+					<th scope="col">Status</th>
+					<th scope="col" style="width:200px" class="text-center">Acões</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tipo :  ${listagem}">
+					<th scope="row" th:text="${tipo.id}"></th>
+					<td th:text="${tipo.nome}"></td>
+					<td class="text-center"><a th:href="@{/tipoempresa/deletar/{id}(id=${tipo.id})}"
+							th:onclick='return validarExclusao();' class="btn btn-danger btn-sm  rounded-circle">
+							<i class="bi bi-x-lg"></i>
+						</a>
+
+						<a th:href="@{/tipoempresa/retorna/{id}(id=${tipo.id})}"
+							class="btn btn-success btn-sm  rounded-circle"><i class="bi bi-pencil"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+	</div>
+
+	<!-- INCLUDE DO RODAPE -->
+	<div th:replace="menu :: rodape">
+	</div>
+</body>
+
+<script>
+
+	function validarExclusao() {
+
+		var id = document.getElementById('id');
+
+		if (confirm("Deseja ecluir o cadastro ?")) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+</script>
+
+</html>
