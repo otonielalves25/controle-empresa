@@ -48,8 +48,6 @@ public class ContatoController {
 
 		}
 
-		contato.setEmpresa(contato.getEmpresa());
-
 		contatoRepository.save(contato);
 		model.addAttribute("listagem", contatoRepository.findAll());
 		model.addAttribute("msg", "Cadastrado com Sucesso");
