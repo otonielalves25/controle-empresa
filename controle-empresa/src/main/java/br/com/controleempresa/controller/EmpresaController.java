@@ -1,5 +1,7 @@
 package br.com.controleempresa.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +46,7 @@ public class EmpresaController {
 		}
 
 		empresa.getEndereco().setEmpresa(empresa);
-		
+
 		empresaRepository.save(empresa);
 		model.addAttribute("listagem", empresaRepository.findAll());
 		model.addAttribute("msg", "Cadastrado com Sucesso");
@@ -63,11 +65,13 @@ public class EmpresaController {
 		model.addAttribute("empresa", empresaRepository.findById(id));
 		return "empresa-cad";
 	}
-	
 
 	@RequestMapping(value = "/detalhe/{id}", method = RequestMethod.GET)
 	public String detalhe(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("empresa", empresaRepository.findById(id));
+		Optional<Empresa> empOp = empresaRepository.findById(id);
+		if (empOp.isPresent()) {
+			model.addAttribute("empresa", empOp.get());
+		}	
 		return "empresa-detalhe";
 	}
 
