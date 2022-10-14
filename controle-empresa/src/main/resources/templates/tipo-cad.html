@@ -6,13 +6,13 @@
 	<link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css}" rel="stylesheet" />
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Cadastro status</title>
+	<title>Cadastro de Empresas</title>
 </head>
 
 <body>
 	<!-- INSERIR O MENU NO INICIO -->
 	<nav th:replace="menu :: menu"></nav>
-	
+
 	<!-- DEFINE O TAMANHO DA CAIXINHA -->
 	<div class="container col-10">
 
@@ -37,13 +37,10 @@
 				</div>
 				<div class="row">
 					<div class="col-2 mt-2">
-						<input type="submit" value="Salvar" class="btn btn-primary w-100" />
-
+						<input type="submit" value="Salvar" class="btn btn-primary" />
+						<a th:href="@{/tipoempresa}" class="btn btn-secondary">Limpar</a>
 					</div>
-					<div class="col-2 mt-2">					
-						<a th:href="@{/tipoempresa}" class="btn btn-secondary w-100">Limpar</a>
 
-					</div>
 				</div>
 		</div>
 		</form>
@@ -87,9 +84,7 @@
 
 	function validarExclusao() {
 
-		var id = document.getElementById('id');
-
-		if (confirm("Deseja ecluir o cadastro ?")) {
+		if (confirm("Deseja excluir o cadastro ?")) {
 			return true;
 		} else {
 			return false;

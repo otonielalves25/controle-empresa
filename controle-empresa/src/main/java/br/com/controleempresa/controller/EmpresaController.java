@@ -27,23 +27,25 @@ public class EmpresaController {
 
 	@GetMapping("/limpar")
 	public String limpar(Model model) {
-		model.addAttribute("objeto", new Empresa());
+		model.addAttribute("empresa", new Empresa());
 		return "empresa-cad";
 	}
 
 	@PostMapping("/cadastrar")
-	public String cadastrar(Model model, Empresa objeto) {
+	public String cadastrar(Model model, Empresa empresa) {
 
-		Empresa objeto2 = empresaRepository.findByNome(objeto.getNome());
+		Empresa objeto2 = empresaRepository.findByNome(empresa.getNome());
 
-		if (objeto2 != null) {
+		if (objeto2 != null && objeto2.getId() != empresa.getId()) {
 			model.addAttribute("msg", "Status já cadatrado");
-			model.addAttribute("objeto", objeto);
+			model.addAttribute("empresa", empresa);
 			return "empresa-cad";
 
 		}
 
-		empresaRepository.save(objeto);
+		empresa.getEndereco().setEmpresa(empresa);
+		
+		empresaRepository.save(empresa);
 		model.addAttribute("listagem", empresaRepository.findAll());
 		model.addAttribute("msg", "Cadastrado com Sucesso");
 		return "empresa-lista";
@@ -58,14 +60,14 @@ public class EmpresaController {
 
 	@RequestMapping(value = "/retorna/{id}", method = RequestMethod.GET)
 	public String buscarPorId(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("objeto", empresaRepository.findById(id));
+		model.addAttribute("empresa", empresaRepository.findById(id));
 		return "empresa-cad";
 	}
 	
 
 	@RequestMapping(value = "/detalhe/{id}", method = RequestMethod.GET)
 	public String detalhe(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("objeto", empresaRepository.findById(id));
+		model.addAttribute("empresa", empresaRepository.findById(id));
 		return "empresa-detalhe";
 	}
 

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.controleempresa.modelo.Status;
 import br.com.controleempresa.modelo.TipoEmpresa;
-import br.com.controleempresa.repository.StatusRepository;
 import br.com.controleempresa.repository.TipoRepository;
 
 @Controller
@@ -33,7 +32,7 @@ public class TipoController {
 
 		Status tipoempresa2 = tipoRepository.findByNome(objeto.getNome());
 
-		if (tipoempresa2 != null) {
+		if (tipoempresa2 != null && tipoempresa2.getId() != objeto.getId()) {
 			model.addAttribute("msg", "Status já cadatrado");
 			model.addAttribute("tipoempresa", objeto);
 			model.addAttribute("listagem", tipoRepository.findAll());

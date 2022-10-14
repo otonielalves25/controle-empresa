@@ -31,7 +31,7 @@ public class StatusController {
 
 		Status status2 = statusRepository.findByNome(status.getNome());
 
-		if (status2 != null) {
+		if (status2 != null && status2.getId() != status.getId()) {
 			model.addAttribute("msg", "Status já cadatrado");
 			model.addAttribute("status", status);
 			model.addAttribute("listaStatus", statusRepository.findAll());
