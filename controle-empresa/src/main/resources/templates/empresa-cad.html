@@ -2,15 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css}" rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css}"
+	rel="stylesheet" />
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Cadastro de Empresas</title>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadastro de Empresas</title>
 </head>
 
 <body>
@@ -22,29 +27,38 @@
 		<!-- CAIXA DE CADASTRO -->
 		<div class="shadow-lg p-4 my-3  mt-5 bg-body rounded">
 
+
+			<!-- CAIXA DE CADASTRO DA EMPRESA --------------------------------------------->
 			<div class="row">
-				<h1>Cadastro de Empresa</h1>
+				<h1>
+					<b>Cadastro de Empresa</b>
+				</h1>
 				<hr>
 			</div>
-			<form method="post" th:action="@{/empresa/cadastrar}" th:object="${empresa}">
+			<form method="post" th:action="@{/empresa/cadastrar}"
+				th:object="${empresa}">
 
 				<input type="hidden" th:field="${empresa.id}">
 
 				<div class="row">
 					<div class="col-md-5 col-sm-12">
-						<label for="nome" class="form-label">Nome Empresa</label>
-						<input id="nome" name="nome" required="required" type="text" class="form-control"
-							th:field="${empresa.nome}" autofocus maxlength="150" />
+						<label for="nome" class="form-label">Nome Empresa</label> <input
+							id="nome" name="nome" required="required" type="text"
+							class="form-control" th:field="${empresa.nome}" autofocus
+							maxlength="150" />
 					</div>
 					<div class="col-md-5 col-sm-12">
-						<label for="nome" class="form-label">Razão Social</label>
-						<input id="razaosocial" name="razaosocial" required="required" type="text" class="form-control"
+						<label for="nome" class="form-label">Razão Social</label> <input
+							id="razaosocial" name="razaosocial" required="required"
+							type="text" class="form-control"
 							th:field="${empresa.razaoSocial}" autofocus maxlength="150" />
 					</div>
 					<div class="col-md-2 col-sm-12">
-						<label for="cnpj" class="form-label">CNPJ</label>
-						<input id="cnpj" name="cnpj" required="required" type="text" class="form-control"
-							th:field="${empresa.cnpj}" autofocus maxlength="30" placeholder="000.000.000/0000-00" onkeypress="$(this).mask('000.000.000/0000-00')"/>
+						<label for="cnpj" class="form-label">CNPJ</label> <input id="cnpj"
+							name="cnpj" required="required" type="text" class="form-control"
+							th:field="${empresa.cnpj}" autofocus maxlength="30"
+							placeholder="000.000.000/0000-00"
+							onkeypress="$(this).mask('000.000.000/0000-00')" />
 					</div>
 
 				</div>
@@ -52,44 +66,54 @@
 				<div class="row">
 
 					<div class="col-md-4 col-sm-12">
-						<label for="site" class="form-label">Site</label>
-						<input id="site" name="site" required="required" type="text" class="form-control"
+						<label for="site" class="form-label">Site</label> <input id="site"
+							name="site" required="required" type="text" class="form-control"
 							th:field="${empresa.site}" autofocus maxlength="150" />
 					</div>
 					<div class="col-md-4 col-sm-12">
-						<label for="email" class="form-label">Email</label>
-						<input id="email" name="email" required="required" type="text" class="form-control"
-							th:field="${empresa.email}" autofocus maxlength="150" />
+						<label for="email" class="form-label">Email</label> <input
+							id="email" name="email" required="required" type="text"
+							class="form-control" th:field="${empresa.email}" autofocus
+							maxlength="150" />
 					</div>
 					<div class="col-md-2 col-sm-6">
-						<label for="whatsapp" class="form-label">WhatApp</label>
-						<input id="whatsapp" name="whatsapp" required="required" type="text" class="form-control"
-							th:field="${empresa.whatsapp}" autofocus maxlength="30" placeholder="(00)00000-0000" onkeypress="$(this).mask('(00)00000-0000')"/>
+						<label for="whatsapp" class="form-label">WhatApp</label> <input
+							id="whatsapp" name="whatsapp" required="required" type="text"
+							class="form-control" th:field="${empresa.whatsapp}" autofocus
+							maxlength="30" placeholder="(00)00000-0000"
+							onkeypress="$(this).mask('(00)00000-0000')" />
 					</div>
 					<div class="col-md-2 col-sm-6">
-						<label for="telefone" class="form-label">Telefone</label>
-						<input id="telefone" name="telefone" required="required" type="text" class="form-control"
-							th:field="${empresa.telefone}" autofocus maxlength="30" placeholder="(00)0000-0000" onkeypress="$(this).mask('(00)0000-0000')"/>
+						<label for="telefone" class="form-label">Telefone</label> <input
+							id="telefone" name="telefone" required="required" type="text"
+							class="form-control" th:field="${empresa.telefone}" autofocus
+							maxlength="30" placeholder="(00)0000-0000"
+							onkeypress="$(this).mask('(00)0000-0000')" />
 					</div>
-				
+
 				</div>
-			
-				<div class="row mt-2">		
-					<h4>Endereço</h4>			
+
+				<!-- CAIXA DE CADASTRO DO ENDEREÇO --------------------------------------------->
+
+				<div class="row mt-2">
+					<h4>
+						<b>Endereço</b>
+					</h4>
 					<input type="hidden" th:field="${empresa.endereco.id}">
 				</div>
 
 				<div class="row">
 
 					<div class="col-md-10 col-sm-10">
-						<label for="rua" class="form-label">Rua</label>
-						<input id="rua" name="site" required="rua" type="text" class="form-control"
+						<label for="rua" class="form-label">Rua</label> <input id="rua"
+							name="site" required="rua" type="text" class="form-control"
 							th:field="${empresa.endereco.rua}" autofocus maxlength="150" />
 					</div>
 					<div class="col-md-2 col-sm-2">
-						<label for="numero" class="form-label">Número</label>
-						<input id="numero" name="numero" required="required" type="text" class="form-control"
-							th:field="${empresa.endereco.numero}" autofocus maxlength="150" />
+						<label for="numero" class="form-label">Número</label> <input
+							id="numero" name="numero" required="required" type="text"
+							class="form-control" th:field="${empresa.endereco.numero}"
+							autofocus maxlength="150" />
 					</div>
 
 				</div>
@@ -97,29 +121,129 @@
 				<div class="row">
 
 					<div class="col-md-4 col-sm-12">
-						<label for="bairro" class="form-label">Bairro</label>
-						<input id="bairro" name="bairro" required="true" type="text" class="form-control"
-							th:field="${empresa.endereco.bairro}" autofocus maxlength="150" />
+						<label for="bairro" class="form-label">Bairro</label> <input
+							id="bairro" name="bairro" required="true" type="text"
+							class="form-control" th:field="${empresa.endereco.bairro}"
+							autofocus maxlength="150" />
 					</div>
 					<div class="col-md-4 col-sm-12">
-						<label for="cidade" class="form-label">Cidade</label>
-						<input id="cidade" name="cidade" required="true" type="text" class="form-control"
-							th:field="${empresa.endereco.cidade}" autofocus maxlength="150" />
+						<label for="cidade" class="form-label">Cidade</label> <input
+							id="cidade" name="cidade" required="true" type="text"
+							class="form-control" th:field="${empresa.endereco.cidade}"
+							autofocus maxlength="150" />
 					</div>
 
 					<div class="col-md-4 col-sm-12">
-						<label for="estado" class="form-label">Estado</label>
-						<input id="estado" name="estado" required="true" type="text" class="form-control"
-							th:field="${empresa.endereco.estado}" autofocus maxlength="150" />
+						<label for="estado" class="form-label">Estado</label> <input
+							id="estado" name="estado" required="true" type="text"
+							class="form-control" th:field="${empresa.endereco.estado}"
+							autofocus maxlength="150" />
 					</div>
 
 				</div>
+
+				<!-- CAIXA DE CADASTRO DO CONTRATO --------------------------------------------->
+
+				<div class="row mt-2">
+					<h4>
+						<b>Dados do Contrato</b>
+					</h4>
+					<input type="hidden" th:field="${empresa.cadastro.id}">
+				</div>
+
+				<div class="row">
+					<div class="col-md-2 col-sm-6">
+						<label for="dataCadastro" class="form-label">Data Cadastro</label>
+						<input id="dataCadastro" name="dataCadastro" required="required"
+							type="date" class="form-control"
+							th:field="${empresa.cadastro.dataCadastro}" autofocus
+							maxlength="20" />
+					</div>
+					<div class="col-md-2 col-sm-6">
+						<label for="dataInicio" class="form-label">Data Inicio</label> <input
+							id="dataInicio" name="dataInicio" required="required" type="date"
+							class="form-control" th:field="${empresa.cadastro.dataInicio}"
+							autofocus maxlength="20" />
+					</div>
+					<div class="col-md-2 col-sm-6">
+						<label for="dataFim" class="form-label">Data Fim</label> <input
+							id="dataFim" name="dataFim" required="required" type="date"
+							class="form-control" th:field="${empresa.cadastro.dataFim}"
+							autofocus maxlength="20" />
+					</div>
+					<div class="col-md-2 col-sm-6">
+						<label for="termo" class="form-label">Termo</label> <input
+							id="termo" name="termo" required="required" type="text"
+							class="form-control" th:field="${empresa.cadastro.termo}"
+							autofocus maxlength="20" />
+					</div>
+					<div class="col-md-4 col-sm-12">
+						<label for="solicitante" class="form-label">Solicitante</label> <input
+							id="solicitante" name="solicitante" required="required"
+							type="text" class="form-control"
+							th:field="${empresa.cadastro.solicitante}" autofocus
+							maxlength="150" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 col-sm-6">
+						<label for="dataCadastro" class="form-label">Data CRM</label> <input
+							id="dataCrm" name="dataCrm" required="required" type="date"
+							class="form-control" th:field="${empresa.cadastro.dataCrm}"
+							autofocus maxlength="20" />
+					</div>
+
+					<div class="col-md-3 col-sm-6">
+						<label for="acao" class="form-label">Data CRM</label> <input
+							id="acao" name="acao" required="required" type="text"
+							class="form-control" th:field="${empresa.cadastro.acao}"
+							autofocus maxlength="50" />
+					</div>
+					<div class="col-md-7 col-sm-12">
+						<label for="acao" class="form-label">Data CRM</label> <input
+							id="acao" name="acao" required="required" type="file"
+							class="form-control" th:field="${empresa.cadastro.anexo}"
+							autofocus maxlength="150" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<label for="empresa" class="form-label">Status</label> <select
+							class="form-select form-select"
+							th:field="${empresa.cadastro.status}" required>
+							<option value="">Selecione...</option>
+							<option th:each="esta : ${statusLista}" th:value="${esta.id}"
+								th:text="${esta.nome}" />
+						</select>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<label for="empresa" class="form-label">Tipo Empresa</label> <select
+							class="form-select form-select"
+							th:field="${empresa.cadastro.tipoEmpresa}" required>
+							<option value="">Selecione...</option>
+							<option th:each="tipo : ${tipoEmpresaLista}"
+								th:value="${tipo.id}" th:text="${tipo.nome}" />
+						</select>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<label for="tipoEmpresa" class="form-label">Observação </label>
+						<textarea class="form-control" id="tipoEmpresa"
+							th:text="${empresa.cadastro.observacao}" rows="3"></textarea>
+
+					</div>
+
+				</div>
+
 
 				<div class="row">
 					<div class="col-md col-ms mt-2">
-						<input type="submit" value="Salvar" class="btn btn-primary" />
-						<a th:href="@{/empresa/limpar}" class="btn btn-secondary">Novo</a>
-						<a th:href="@{/empresa}" class="btn btn-info">Listar</a>
+						<input type="submit" value="Salvar" class="btn btn-primary" /> <a
+							th:href="@{/empresa/limpar}" class="btn btn-secondary">Novo</a> <a
+							th:href="@{/empresa}" class="btn btn-info">Listar</a>
 					</div>
 				</div>
 
@@ -130,8 +254,7 @@
 	</div>
 
 	<!-- INCLUDE DO RODAPE -->
-	<div th:replace="menu :: rodape">
-	</div>
+	<div th:replace="menu :: rodape"></div>
 </body>
 
 </html>

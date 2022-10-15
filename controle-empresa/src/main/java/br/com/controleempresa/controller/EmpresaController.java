@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.controleempresa.modelo.Empresa;
 import br.com.controleempresa.repository.EmpresaRepository;
+import br.com.controleempresa.repository.StatusRepository;
+import br.com.controleempresa.repository.TipoRepository;
 
 @Controller
 @RequestMapping("/empresa")
@@ -20,6 +22,12 @@ public class EmpresaController {
 
 	@Autowired
 	EmpresaRepository empresaRepository;
+	
+	@Autowired
+	TipoRepository tipoRepository;
+	
+	@Autowired
+	StatusRepository statusRepository;
 
 	@GetMapping("")
 	public String inicia(Model model) {
@@ -30,6 +38,8 @@ public class EmpresaController {
 	@GetMapping("/limpar")
 	public String limpar(Model model) {
 		model.addAttribute("empresa", new Empresa());
+		model.addAttribute("statusLista", statusRepository.findAll());
+		model.addAttribute("tipoEmpresaLista", tipoRepository.findAll());
 		return "empresa-cad";
 	}
 
@@ -41,6 +51,8 @@ public class EmpresaController {
 		if (objeto2 != null && objeto2.getId() != empresa.getId()) {
 			model.addAttribute("msg", "Status já cadatrado");
 			model.addAttribute("empresa", empresa);
+			model.addAttribute("statusLista", statusRepository.findAll());
+			model.addAttribute("tipoEmpresaLista", tipoRepository.findAll());
 			return "empresa-cad";
 
 		}
@@ -63,6 +75,8 @@ public class EmpresaController {
 	@RequestMapping(value = "/retorna/{id}", method = RequestMethod.GET)
 	public String buscarPorId(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("empresa", empresaRepository.findById(id));
+		model.addAttribute("statusLista", statusRepository.findAll());
+		model.addAttribute("tipoEmpresaLista", tipoRepository.findAll());
 		return "empresa-cad";
 	}
 

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css}" rel="stylesheet" />
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cadastro de Empresas</title>
+</head>
+
+<body>
+
+	<!-- INSERIR O MENU NO INICIO -->
+	<nav th:replace="menu :: menu"></nav>
+	<div class="container col-12">
+
+		<!-- CAIXA DE CADASTRO -->
+		<div class="shadow-lg p-4 my-3  mt-5 bg-body rounded">
+
+			<div class="row">
+				<h1>Cadastro de Contato</h1>
+				<hr>
+			</div>
+			<form method="post" th:action="@{/contato/cadastrar}" th:object="${contato}">
+
+				<input type="hidden" th:field="${contato.id}">
+
+				<div class="row">
+					<div class="col-md-5 col-sm-12">
+						<label for="nome" class="form-label">Nome</label>
+						<input id="nome" name="nome" required="required" type="text" class="form-control"
+							th:field="${contato.nome}" autofocus maxlength="150" />
+					</div>
+					<div class="col-md-2 col-sm-12">
+						<label for="cpf" class="form-label">CPF</label>
+						<input id="cpf" name="razaosocial" required="required" type="text" class="form-control"
+							th:field="${contato.cpf}" autofocus maxlength="50"
+							onkeypress="$(this).mask('000.000.000-00')" placeholder="000.000.000-00" />
+					</div>
+					<div class="col-md-2 col-sm-12">
+						<label for="rg" class="form-label">RG</label>
+						<input id="rg" name="rg" required="required" type="text" class="form-control"
+							th:field="${contato.rg}" autofocus maxlength="30" />
+					</div>
+					<div class="col-md-3 col-sm-12">
+						<label for="cargo" class="form-label">Cargo</label>
+						<input id="cargo" name="cargo" required="required" type="text" class="form-control"
+							th:field="${contato.cargo}" autofocus maxlength="130" />
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-md-2 col-sm-12">
+						<label for="telefone" class="form-label">Telefone</label>
+						<input id="telefone" name="telefone" required="required" type="text" class="form-control"
+							th:field="${contato.telefone}" autofocus maxlength="50" 
+							onkeypress="$(this).mask('(00)00000-0000')" placeholder="(00)00000-0000" />
+					</div>
+					<div class="col-md-4 col-sm-12">
+						<label for="email" class="form-label">Email</label>
+						<input id="email" name="email" required="required" type="text" class="form-control"
+							th:field="${contato.email}" autofocus maxlength="50" />
+					</div>
+					<div class="col-md-2 col-sm-12">
+						<label for="login" class="form-label">Login</label>
+						<input id="login" name="login" required="required" type="text" class="form-control"
+							th:field="${contato.login}" autofocus maxlength="30" />
+					</div>
+
+					<div class="col-md-4 col-sm-12">
+						<label for="empresa" class="form-label">Empresa</label>
+						<select class="form-select form-select" th:field="*{empresa}" required>
+							<option value="">Selecione...</option>
+							<option th:each="empr : ${empresas}" th:value="${empr.id}" th:text="${empr.nome}" />
+						</select>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-md col-ms mt-2">
+						<input type="submit" value="Salvar" class="btn btn-primary" />
+						<a th:href="@{/contato/limpar}" class="btn btn-secondary">Novo</a>
+						<a th:href="@{/contato}" class="btn btn-info">Listar</a>
+					</div>
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+	<!-- INCLUDE DO RODAPE -->
+	<div th:replace="menu :: rodape">
+	</div>
+</body>
+
+</html>

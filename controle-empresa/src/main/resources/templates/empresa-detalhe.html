@@ -3,12 +3,16 @@
 
 <head>
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css}" rel="stylesheet" />
-	<title>Pagina Modelo</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css}"
+	rel="stylesheet" />
+<title>Pagina Modelo</title>
 </head>
 
 <body>
@@ -20,43 +24,61 @@
 		<!-- TABELA COM LISTAGEM DE STATUS -->
 		<div class="row mt-5">
 
-			<div class="col-6">
+			<div class="col-4 card p-3">
 
 				<h3>Sobre a Empresa</h3>
 
 				<div class="mt-4">
 
-					<b>Name: </b><span th:text="${empresa?.nome}"></span></br>
-					<b>Razão Social: </b><span th:text="${empresa?.razaoSocial}"></span></br>
-					<b>CNPJ: </b><span th:text="${empresa?.cnpj}"></span></br>
-					<b>Site: </b><span th:text="${empresa?.site}"></span></br>
-					<b>Email: </b><span th:text="${empresa?.email}"></span></br>
-					<b>WhatsApp: </b><span th:text="${empresa?.whatsapp}"></span></br>
-					<b>Telefone: </b><span th:text="${empresa?.telefone}"></span></br>
+					<b>Name: </b><span th:text="${empresa?.nome}"></span></br> <b>Razão
+						Social: </b><span th:text="${empresa?.razaoSocial}"></span></br> <b>CNPJ:
+					</b><span th:text="${empresa?.cnpj}"></span></br> <b>Site: </b><span
+						th:text="${empresa?.site}"></span></br> <b>Email: </b><span
+						th:text="${empresa?.email}"></span></br> <b>WhatsApp: </b><span
+						th:text="${empresa?.whatsapp}"></span></br> <b>Telefone: </b><span
+						th:text="${empresa?.telefone}"></span></br>
 
 				</div>
 
 			</div>
-			<div class="col-6">
+			<div class="col-4 card p-3">
 
 				<h4>Endereço</h4>
 
 				<div class="mt-4">
 
-					<b>Rua: </b><span th:text="${empresa.endereco?.rua}"></span></br>
-					<b>Número: </b><span th:text="${empresa.endereco?.numero}"></span></br>
-					<b>Bairro: </b><span th:text="${empresa.endereco?.bairro}"></span></br>
-					<b>Cidade: </b><span th:text="${empresa.endereco?.cidade}"></span></br>
-					<b>Estado: </b><span th:text="${empresa.endereco?.estado}"></span></br>
+					<b>Rua: </b><span th:text="${empresa.endereco?.rua}"></span></br> <b>Número:
+					</b><span th:text="${empresa.endereco?.numero}"></span></br> <b>Bairro:
+					</b><span th:text="${empresa.endereco?.bairro}"></span></br> <b>Cidade:
+					</b><span th:text="${empresa.endereco?.cidade}"></span></br> <b>Estado:
+					</b><span th:text="${empresa.endereco?.estado}"></span></br>
 
 				</div>
 			</div>
-	
-			<div class="row mt-5">
+
+			<div class="col-4 card p-3">
+
+				<h4>Dados Contrato</h4>
+
+				<div class="mt-4">
+
+					<b>Rua: </b><span th:text="${empresa.endereco?.rua}"></span></br> <b>Número:
+					</b><span th:text="${empresa.endereco?.numero}"></span></br> <b>Bairro:
+					</b><span th:text="${empresa.endereco?.bairro}"></span></br> <b>Cidade:
+					</b><span th:text="${empresa.endereco?.cidade}"></span></br> <b>Estado:
+					</b><span th:text="${empresa.endereco?.estado}"></span></br>
+
+				</div>
+			</div>
+
+			<div class="row mt-3">
 				<div class="col">
-					<a th:href="@{/empresa/retorna/{id}(id=${empresa.id})}" class="btn btn-primary">Alterar</a>
-						<a th:href="@{/empresa/limpar}" class="btn btn-secondary">Novo</a>
-						<a th:href="@{/empresa}" class="btn btn-info">Listar</a>
+					<a th:href="@{/empresa/retorna/{id}(id=${empresa.id})}"
+						class="btn btn-primary">Alterar Empresa</a> <a
+						th:href="@{/empresa/limpar}" class="btn btn-secondary">Nova
+						Empresa</a> <a th:href="@{/contato/limpar}" class="btn btn-danger">Novo
+						Contato</a> <a th:href="@{/empresa}" class="btn btn-info">Listar
+						Empresa</a>
 				</div>
 
 			</div>
@@ -66,11 +88,11 @@
 			<table class="table table-striped table-hover table-sm mt-1">
 				<thead class="table-dark opacity-75">
 					<tr>
-						<th scope="col" style="width:70px">ID</th>
+						<th scope="col" style="width: 70px">ID</th>
 						<th scope="col">Nome</th>
 						<th scope="col">Email</th>
 						<th scope="col">Celular</th>
-						<th scope="col" style="width:200px" class="text-center">Acões</th>
+						<th scope="col" style="width: 200px" class="text-center">Acões</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -79,14 +101,14 @@
 						<td th:text="${contato.nome}"></td>
 						<td th:text="${contato.email}"></td>
 						<td th:text="${contato.telefone}"></td>
-						<td class="text-center"><a th:href="@{/contato/deletar/{id}(id=${contato.id})}"
-								th:onclick='return validarExclusao();' class="btn btn-danger btn-sm  rounded-circle">
-								<i class="bi bi-x-lg"></i>
-							</a>
-
-							<a th:href="@{/contato/retorna/{id}(id=${contato.id})}"
-								class="btn btn-success btn-sm  rounded-circle"><i class="bi bi-pencil"></i></a>
-						</td>
+						<td class="text-center"><a
+							th:href="@{/contato/deletar/{id}(id=${contato.id})}"
+							th:onclick='return validarExclusao();'
+							class="btn btn-danger btn-sm  rounded-circle"> <i
+								class="bi bi-x-lg"></i>
+						</a> <a th:href="@{/contato/retorna/{id}(id=${contato.id})}"
+							class="btn btn-success btn-sm  rounded-circle"><i
+								class="bi bi-pencil"></i></a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -98,8 +120,7 @@
 	</div>
 
 	<!-- INCLUDE DO RODAPE -->
-	<div th:replace="menu :: rodape">
-	</div>
+	<div th:replace="menu :: rodape"></div>
 
 
 	<script>
