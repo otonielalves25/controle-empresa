@@ -35,7 +35,7 @@
 				</h1>
 				<hr>
 			</div>
-			<form method="post" th:action="@{/empresa/cadastrar}"
+			<form method="post" th:action="@{/empresa/cadastrar}" enctype="multipart/form-data"
 				th:object="${empresa}">
 
 				<input type="hidden" th:field="${empresa.id}">
@@ -194,16 +194,17 @@
 					</div>
 
 					<div class="col-md-3 col-sm-6">
-						<label for="acao" class="form-label">Data CRM</label> <input
+						<label for="acao" class="form-label">Ação</label> <input
 							id="acao" name="acao" required="required" type="text"
 							class="form-control" th:field="${empresa.cadastro.acao}"
 							autofocus maxlength="50" />
 					</div>
 					<div class="col-md-7 col-sm-12">
-						<label for="acao" class="form-label">Data CRM</label> <input
-							id="acao" name="acao" required="required" type="file"
-							class="form-control" th:field="${empresa.cadastro.anexo}"
+						<label for="anexo" class="form-label">Anexo</label> <input
+							name="anexo" required="required" type="file"
+							class="form-control"
 							autofocus maxlength="150" />
+							<input type="text" th:field ="${empresa.cadastro.anexo}" id="anexo"/>	 
 					</div>
 				</div>
 				<div class="row">
@@ -232,12 +233,11 @@
 					<div class="col-md-12 col-sm-12">
 						<label for="tipoEmpresa" class="form-label">Observação </label>
 						<textarea class="form-control" id="tipoEmpresa"
-							th:text="${empresa.cadastro.observacao}" rows="3"></textarea>
+							th:field="${empresa.cadastro.observacao}" rows="3"></textarea>
 
 					</div>
 
 				</div>
-
 
 				<div class="row">
 					<div class="col-md col-ms mt-2">

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.controleempresa.modelo.Empresa;
 import br.com.controleempresa.repository.EmpresaRepository;
@@ -44,7 +46,7 @@ public class EmpresaController {
 	}
 
 	@PostMapping("/cadastrar")
-	public String cadastrar(Model model, Empresa empresa) {
+	public String cadastrar(Model model, Empresa empresa, @RequestParam("anexo") MultipartFile anexo) {
 
 		Empresa objeto2 = empresaRepository.findByNome(empresa.getNome());
 
@@ -56,8 +58,13 @@ public class EmpresaController {
 			return "empresa-cad";
 
 		}
-
+		
+		/*  PEGANDO O CAMINHO DO ANEXO   */
+		String caminhoAnexo = anexo.getOriginalFilename();
+		empresa.getCadastro().setAnexo(caminhoAnexo);
+		
 		empresa.getEndereco().setEmpresa(empresa);
+		empresa.getCadastro().setEmpresa(empresa);
 
 		empresaRepository.save(empresa);
 		model.addAttribute("listagem", empresaRepository.findAll());
