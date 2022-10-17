@@ -21,6 +21,7 @@
 	<nav th:replace="menu :: menu"></nav>
 	<div class="container">
 
+
 		<!-- TABELA COM LISTAGEM DE STATUS -->
 		<div class="row mt-5">
 
@@ -30,13 +31,13 @@
 
 				<div class="mt-4">
 
-					<b>Name: </b><span th:text="${empresa?.nome}"></span></br> <b>Razão
-						Social: </b><span th:text="${empresa?.razaoSocial}"></span></br> <b>CNPJ:
-					</b><span th:text="${empresa?.cnpj}"></span></br> <b>Site: </b><span
-						th:text="${empresa?.site}"></span></br> <b>Email: </b><span
-						th:text="${empresa?.email}"></span></br> <b>WhatsApp: </b><span
-						th:text="${empresa?.whatsapp}"></span></br> <b>Telefone: </b><span
-						th:text="${empresa?.telefone}"></span></br>
+					<b>Name: </b><span th:text="${empresa?.nome}"></span><br> <b>Razão
+						Social: </b><span th:text="${empresa?.razaoSocial}"></span><br> <b>CNPJ:
+					</b><span th:text="${empresa?.cnpj}"></span><br> <b>Site: </b><span
+						th:text="${empresa?.site}"></span><br> <b>Email: </b><span
+						th:text="${empresa?.email}"></span><br> <b>WhatsApp: </b><span
+						th:text="${empresa?.whatsapp}"></span><br> <b>Telefone: </b><span
+						th:text="${empresa?.telefone}"></span><br>
 
 				</div>
 
@@ -47,11 +48,11 @@
 
 				<div class="mt-4">
 
-					<b>Rua: </b><span th:text="${empresa.endereco?.rua}"></span></br> <b>Número:
-					</b><span th:text="${empresa.endereco?.numero}"></span></br> <b>Bairro:
-					</b><span th:text="${empresa.endereco?.bairro}"></span></br> <b>Cidade:
-					</b><span th:text="${empresa.endereco?.cidade}"></span></br> <b>Estado:
-					</b><span th:text="${empresa.endereco?.estado}"></span></br>
+					<b>Rua: </b><span th:text="${empresa.endereco?.rua}"></span><br>
+					<b>Número: </b><span th:text="${empresa.endereco?.numero}"></span><br>
+					<b>Bairro: </b><span th:text="${empresa.endereco?.bairro}"></span><br>
+					<b>Cidade: </b><span th:text="${empresa.endereco?.cidade}"></span><br>
+					<b>Estado: </b><span th:text="${empresa.endereco?.estado}"></span><br>
 
 				</div>
 			</div>
@@ -62,17 +63,29 @@
 
 				<div class="mt-4">
 
-					<b>Rua: </b><span th:text="${empresa.endereco?.rua}"></span></br> <b>Número:
-					</b><span th:text="${empresa.endereco?.numero}"></span></br> <b>Bairro:
-					</b><span th:text="${empresa.endereco?.bairro}"></span></br> <b>Cidade:
-					</b><span th:text="${empresa.endereco?.cidade}"></span></br> <b>Estado:
-					</b><span th:text="${empresa.endereco?.estado}"></span></br>
+					<b>Data Cadastro: </b><span
+						th:text="${#dates.format(empresa.cadastro?.dataCadastro,'dd/MM/yyyy')}"></span><br>
+
+					<b>Data Inicio: </b><span
+						th:text="${#dates.format(empresa.cadastro?.dataInicio,'dd/MM/yyyy')}"></span><br>
+					<b>Termo: </b><span th:text="${empresa.cadastro?.termo}"></span><br>
+					<b>Solicitante: </b><span
+						th:text="${empresa.cadastro?.solicitante}"></span><br> <b>Ação:
+					</b><span th:text="${empresa.cadastro?.acao}"></span><br> <b>Tipo
+						Empresa: </b><span th:text="${empresa.cadastro?.tipoEmpresa?.nome}"></span><br>
+					<b>Status: </b><span th:text="${empresa.cadastro?.status?.nome}"></span><br>
 
 				</div>
 			</div>
 
+			<div class="row mt-1">
+				<fieldset class="form-group border p-3">
+					<b>Observação: </b><span th:text="${empresa.cadastro?.observacao}"></span>
+				</fieldset>
+			</div>
+
 			<div class="row mt-3">
-				<div class="col">
+				<div class="col-12">
 					<a th:href="@{/empresa/retorna/{id}(id=${empresa.id})}"
 						class="btn btn-primary">Alterar Empresa</a> <a
 						th:href="@{/empresa/limpar}" class="btn btn-secondary">Nova

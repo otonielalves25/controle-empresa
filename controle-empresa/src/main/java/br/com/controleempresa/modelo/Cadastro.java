@@ -55,7 +55,7 @@ public class Cadastro implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "status_id")
-    private Status status;
+    private Status status ;
 
     @ManyToOne
     @JoinColumn(name = "tipo_empresa_id")

@@ -24,10 +24,10 @@ public class EmpresaController {
 
 	@Autowired
 	EmpresaRepository empresaRepository;
-	
+
 	@Autowired
 	TipoRepository tipoRepository;
-	
+
 	@Autowired
 	StatusRepository statusRepository;
 
@@ -59,10 +59,13 @@ public class EmpresaController {
 
 		}
 		
-		/*  PEGANDO O CAMINHO DO ANEXO   */
-		String caminhoAnexo = anexo.getOriginalFilename();
+		/* PEGANDO O CAMINHO DO ANEXO */
+		String caminhoAnexo = "";
+
+		caminhoAnexo = anexo.getOriginalFilename();
 		empresa.getCadastro().setAnexo(caminhoAnexo);
-		
+
+		/* SETANDO A EMPRESA NO ENDEREÇO E CADASTRA PRA AUTO SAVAR COM JPA */
 		empresa.getEndereco().setEmpresa(empresa);
 		empresa.getCadastro().setEmpresa(empresa);
 
@@ -92,7 +95,7 @@ public class EmpresaController {
 		Optional<Empresa> empOp = empresaRepository.findById(id);
 		if (empOp.isPresent()) {
 			model.addAttribute("empresa", empOp.get());
-		}	
+		}
 		return "empresa-detalhe";
 	}
 

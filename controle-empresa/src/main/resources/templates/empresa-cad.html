@@ -57,8 +57,8 @@
 						<label for="cnpj" class="form-label">CNPJ</label> <input id="cnpj"
 							name="cnpj" required="required" type="text" class="form-control"
 							th:field="${empresa.cnpj}" autofocus maxlength="30"
-							placeholder="000.000.000/0000-00"
-							onkeypress="$(this).mask('000.000.000/0000-00')" />
+							placeholder="00.000.000/0000-00"
+							onkeypress="$(this).mask('00.000.000/0000-00')" />
 					</div>
 
 				</div>
@@ -106,7 +106,7 @@
 
 					<div class="col-md-10 col-sm-10">
 						<label for="rua" class="form-label">Rua</label> <input id="rua"
-							name="site" required="rua" type="text" class="form-control"
+							name="site" required="required" type="text" class="form-control"
 							th:field="${empresa.endereco.rua}" autofocus maxlength="150" />
 					</div>
 					<div class="col-md-2 col-sm-2">
@@ -122,20 +122,20 @@
 
 					<div class="col-md-4 col-sm-12">
 						<label for="bairro" class="form-label">Bairro</label> <input
-							id="bairro" name="bairro" required="true" type="text"
+							id="bairro" name="bairro" required="required" type="text"
 							class="form-control" th:field="${empresa.endereco.bairro}"
 							autofocus maxlength="150" />
 					</div>
 					<div class="col-md-4 col-sm-12">
 						<label for="cidade" class="form-label">Cidade</label> <input
-							id="cidade" name="cidade" required="true" type="text"
+							id="cidade" name="cidade" required="required" type="text"
 							class="form-control" th:field="${empresa.endereco.cidade}"
 							autofocus maxlength="150" />
 					</div>
 
 					<div class="col-md-4 col-sm-12">
 						<label for="estado" class="form-label">Estado</label> <input
-							id="estado" name="estado" required="true" type="text"
+							id="estado" name="estado" required="required" type="text"
 							class="form-control" th:field="${empresa.endereco.estado}"
 							autofocus maxlength="150" />
 					</div>
